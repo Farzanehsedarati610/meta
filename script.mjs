@@ -1,5 +1,4 @@
-
-// Base sets
+// Source sets (debit)
 const a = [84003997, 727762681039763];
 const b = [84003997, 727762682039763];
 const c = [84003997, 727762683039763];
@@ -13,7 +12,7 @@ const j = [74900356, 727762683000000];
 const k = [74900356, 7277626800039763];
 const l = [74900356, 727762684000000];
 
-// Adjustment sets
+// Destination sets (credit)
 const ab = [41215663, 1298861419215];
 const ac = [41215663, 1298861419215];
 const ad = [41215663, 1298861419215];
@@ -27,28 +26,34 @@ const ak = [41215663, 1298861419215];
 const al = [41215663, 1298861419215];
 const am = [41215663, 1298861419215];
 
-// Combine function
-function combine(setA, setB) {
-  return setA.map((val, i) => val + setB[i]);
+// Transfer function: debit source, credit destination
+function transferFunds(source, destination, amount) {
+  const debited = source.map(val => val - amount);
+  const credited = destination.map(val => val + amount);
+  return { debited, credited };
 }
 
-// Special override function
-function override() {
-  return 1250000;
+// Override function for j, k, l
+function overrideTransfer(source, amount) {
+  const credited = source.map(val => val + amount);
+  return { credited };
 }
 
-// Log results
-console.log("a:", combine(a, ab));
-console.log("b:", combine(b, ac));
-console.log("c:", combine(c, ad));
-console.log("d:", combine(d, ae));
-console.log("e:", combine(e, af));
-console.log("f:", combine(f, ag));
-console.log("g:", combine(g, ah));
-console.log("h:", combine(h, ai));
-console.log("i:", combine(i, aj));
-console.log("j:", override());
-console.log("k:", override());
-console.log("l:", override());
+// Transfer amount
+const amount = 1250000;
 
+// Log all transfers
+console.log("a → ab:", transferFunds(a, ab, amount));
+console.log("b → ac:", transferFunds(b, ac, amount));
+console.log("c → ad:", transferFunds(c, ad, amount));
+console.log("d → ae:", transferFunds(d, ae, amount));
+console.log("e → af:", transferFunds(e, af, amount));
+console.log("f → ag:", transferFunds(f, ag, amount));
+console.log("g → ah:", transferFunds(g, ah, amount));
+console.log("h → ai:", transferFunds(h, ai, amount));
+console.log("i → aj:", transferFunds(i, aj, amount));
 
+// Special override transfers
+console.log("j override:", overrideTransfer(j, amount));
+console.log("k override:", overrideTransfer(k, amount));
+console.log("l override:", overrideTransfer(l, amount));
