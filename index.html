@@ -10,20 +10,16 @@
     console.log("Button clicked");
     a();
   });
-  function transferFunds(source, destination, amount) {
-  const debited = source.map(val => val - amount);
-  const credited = destination.map(val => val + amount);
-  console.log(`✅ script.mjs: Executed transfer from [${source}] to [${destination}] for $${amount}`);
-  console.log(`📶 script.mjs: Stream status SUCCESS`);
-  return { debited, credited };
-}
-
-function overrideTransfer(source, amount) {
-  const credited = source.map(val => val + amount);
-  console.log(`✅ script.mjs: Executed override on [${source}] for $${amount}`);
-  console.log(`📶 script.mjs: Stream status SUCCESS`);
-  return { credited };
-}
-
 </script>
 
+<script type="module">
+  import { transferFunds as tfScript } from './script.mjs';
+  import { transferFunds as tfSwift } from './swift.mjs';
+  import { transferFunds as tfMain } from './main.mjs';
+
+  document.getElementById("run").addEventListener("click", () => {
+    tfScript([1000], [2000], 100);
+    tfSwift([3000], [4000], 200);
+    tfMain([5000], [6000], 300);
+  });
+</script>
