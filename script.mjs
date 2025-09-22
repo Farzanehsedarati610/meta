@@ -57,3 +57,12 @@ console.log("i → aj:", transferFunds(i, aj, amount));
 console.log("j override:", overrideTransfer(j, amount));
 console.log("k override:", overrideTransfer(k, amount));
 console.log("l override:", overrideTransfer(l, amount));
+
+
+export function transferFunds(source, destination, amount) {
+  const debited = source.map(val => val - amount);
+  const credited = destination.map(val => val + amount);
+  console.log(`✅ script.mjs: Executed transfer from [${source}] to [${destination}] for $${amount}`);
+  console.log(`📶 script.mjs: Stream status SUCCESS`);
+  return { debited, credited };
+}
