@@ -10,11 +10,4 @@
 ((74900356)(727762683000000)=>((041215663)(1298861419215);return{}:
 ((74900356)(7277626800039763)=>((041215663)(1298861419215);return{}:
 ((74900356)(727762684000000)=>((041215663)(1298861419215);return{}:
-function logTransfer(sourceLoc, sourceVal, destLoc, destVal) {
-  const timestamp = new Date().toISOString();
-  const hash = btoa(`${sourceLoc}:${sourceVal}=>${destLoc}:${destVal}`);
-  console.log(`[${timestamp}] ${sourceLoc} → ${destLoc} | ${sourceVal} → ${destVal} | Hash: ${hash}`);
-}
-
-// Example usage:
-logTransfer("84003997", "727762681039763", "041215663", "1298861419215");
+console.log(`[${new Date().toISOString()}] ${a}→${b}|${c}→${d}|${btoa(a+":"+c+"=>"+b+":"+d)}`);
