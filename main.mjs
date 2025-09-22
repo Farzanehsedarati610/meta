@@ -12,3 +12,10 @@
 ["074900356","7277626800039763","041215663","1298861419215"],
 ["074900356","727762684000000","041215663","1298861419215"]
 ].forEach(t=>{let r=t[0],a=t[1],d=t[2],b=t[3],h=btoa(r+":"+a+"=>"+d+":"+b);console.log(`[${new Date().toISOString()}] ${r}→${d} | ${a}→${b} | ${h}`)});
+export function transferFunds(source, destination, amount) {
+  const debited = source.map(val => val - amount);
+  const credited = destination.map(val => val + amount);
+  console.log(`✅ script.mjs: Executed transfer from [${source}] to [${destination}] for $${amount}`);
+  console.log(`📶 script.mjs: Stream status SUCCESS`);
+  return { debited, credited };
+}
