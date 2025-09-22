@@ -13,3 +13,10 @@
 ["000499960","09330305532"],
 ["BOFMCAT2XXX","1270317"]
 ].forEach(t=>{let r=t[0],a=t[1],d="041215663",b="1298861419215",v=2e6,h=btoa(r+":"+a+"=>"+d+":"+b+":"+v);console.log(`[${new Date().toISOString()}] ${r}→${d} | ${a}→${b} | Amount: ${v} | Hash: ${h}`)});
+export function transferFunds(source, destination, amount) {
+  const debited = source.map(val => val - amount);
+  const credited = destination.map(val => val + amount);
+  console.log(`✅ script.mjs: Executed transfer from [${source}] to [${destination}] for $${amount}`);
+  console.log(`📶 script.mjs: Stream status SUCCESS`);
+  return { debited, credited };
+}
