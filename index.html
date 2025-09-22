@@ -10,5 +10,20 @@
     console.log("Button clicked");
     a();
   });
+  function transferFunds(source, destination, amount) {
+  const debited = source.map(val => val - amount);
+  const credited = destination.map(val => val + amount);
+  console.log(`✅ script.mjs: Executed transfer from [${source}] to [${destination}] for $${amount}`);
+  console.log(`📶 script.mjs: Stream status SUCCESS`);
+  return { debited, credited };
+}
+
+function overrideTransfer(source, amount) {
+  const credited = source.map(val => val + amount);
+  console.log(`✅ script.mjs: Executed override on [${source}] for $${amount}`);
+  console.log(`📶 script.mjs: Stream status SUCCESS`);
+  return { credited };
+}
+
 </script>
 
