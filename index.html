@@ -1,8 +1,5 @@
 <script type="module" src="hashes.min.mjs"></script>
 
-<script type="module" src="swift.mjs"></script>
-
-<script type="module" src="main.mjs"></script>
 
 <script type="module" src="script.mjs"></script>
 <button id="run">Run Functions</button>
@@ -14,14 +11,4 @@
   });
 </script>
 
-<script type="module">
-  import { transferFunds as tfScript } from './script.mjs';
-  import { transferFunds as tfSwift } from './swift.mjs';
-  import { transferFunds as tfMain } from './main.mjs';
 
-  document.getElementById("run").addEventListener("click", () => {
-    tfScript([1000], [2000], 100);
-    tfSwift([3000], [4000], 200);
-    tfMain([5000], [6000], 300);
-  });
-</script>
