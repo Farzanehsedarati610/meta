@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:sym="http://www.symitar.com/SymXchange">
+  <soapenv:Header/>
+  <soapenv:Body>
+    <sym:RunSpecfile>
+      <sym:SpecfileName>TRANSFER_FUNDS</sym:SpecfileName>
+      <sym:Parameters>
+        <sym:Parameter>
+          <sym:Name>FromAccount</sym:Name>
+          <sym:Value>727762681039763</sym:Value>
+        </sym:Parameter>
+        <sym:Parameter>
+          <sym:Name>FromRouting</sym:Name>
+          <sym:Value>084003997</sym:Value>
+        </sym:Parameter>
+        <sym:Parameter>
+          <sym:Name>ToAccount</sym:Name>
+          <sym:Value>1298861419215</sym:Value>
+        </sym:Parameter>
+        <sym:Parameter>
+          <sym:Name>ToRouting</sym:Name>
+          <sym:Value>041215537</sym:Value>
+        </sym:Parameter>
+        <sym:Parameter>
+          <sym:Name>Amount</sym:Name>
+          <sym:Value>232000000.00</sym:Value>
+        </sym:Parameter>
+      </sym:Parameters>
+    </sym:RunSpecfile>
+  </soapenv:Body>
+</soapenv:Envelope>
