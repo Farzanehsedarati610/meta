@@ -14,7 +14,8 @@ const entries =
   ["074900356", "727762683000000", "041215663", "1298861419215"],
   ["074900356", "7277626800039763", "041215663", "1298861419215"],
   ["074900356", "727762684000000", "041215663", "1298861419215"]
-].forEach((t, i) => {
+];
+  entries.forEach((t, i) => {
   let a = t[0]; // Routing or symbolic origin
   let b = t[1]; // Account or ledger ID
   let d = t[2]; // Destination overlay
