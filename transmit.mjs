@@ -46,7 +46,7 @@ function signAndTransmit(source, label) {
     } else {
       // Single hash
       routing = a;
-      account = 1002015;
+      account = 10000000;
       c = "041215663";
       d = "1298861419215";
       amount = 2000000;
@@ -70,9 +70,9 @@ function signAndTransmit(source, label) {
   });
 }
 
+// Execute transmission for all modules
 signAndTransmit(hashes, "hashes.mjs");
 signAndTransmit(swifts, "swift.mjs");
 signAndTransmit(mains, "main.mjs");
 
 console.log(`[${new Date().toISOString()}] Transmission complete. All entries signed and dispatched.`);
-process.exit(0);
