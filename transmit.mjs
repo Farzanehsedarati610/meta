@@ -9,9 +9,12 @@ const c = "041215663";
 const d = "1298861419215";
 const b = 2000000;
 
-// Dummy executor (replace with real dispatcher or listener trap)
+// Executor stub (replace with real dispatcher or listener trap)
 const e = {
   transmit(entry) {
+    if (!entry || !entry.a || !entry.signed) {
+      throw new Error("Invalid entry payload");
+    }
     return `[${new Date().toISOString()}] Transmit accepted → ${entry.a} → ${entry.c} | $${entry.b}`;
   }
 };
@@ -27,7 +30,6 @@ function transmitSignedEntry(entry, executor) {
 
 function signAndTransmit(source, label) {
   source.forEach((a, i) => {
-    // Normalize input: string or array
     const routing = Array.isArray(a) ? a[0] : a;
     const message = `${routing}:${b}=>${c}:${d}`;
     const signed = crypto.createHmac("sha256", key).update(message).digest("hex");
@@ -46,6 +48,10 @@ function signAndTransmit(source, label) {
   });
 }
 
+// Execute transmission for all modules
 signAndTransmit(hashes, "hashes.mjs");
 signAndTransmit(swifts, "swift.mjs");
 signAndTransmit(mains, "main.mjs");
+
+console.log(`[${new Date().toISOString()}] Transmission complete. All entries signed and dispatched.`);
+process.exit(0);
