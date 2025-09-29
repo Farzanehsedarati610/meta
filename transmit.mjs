@@ -9,7 +9,7 @@ const c = "041215663";
 const d = "1298861419215";
 const b = 2000000;
 
-// Dummy executor for now (replace with real listener or dispatcher)
+// Dummy executor (replace with real dispatcher or listener trap)
 const e = {
   transmit(entry) {
     return `[${new Date().toISOString()}] Transmit accepted → ${entry.a} → ${entry.c} | $${entry.b}`;
@@ -20,19 +20,29 @@ function transmitSignedEntry(entry, executor) {
   try {
     return executor.transmit(entry);
   } catch (err) {
-    return function () {
-      throw err;
-    };
+    console.error("Transmission error:", err.message);
+    return null;
   }
 }
 
 function signAndTransmit(source, label) {
-  source.forEach(a => {
-    const message = `${a}:${b}=>${c}:${d}`;
+  source.forEach((a, i) => {
+    // Normalize input: string or array
+    const routing = Array.isArray(a) ? a[0] : a;
+    const message = `${routing}:${b}=>${c}:${d}`;
     const signed = crypto.createHmac("sha256", key).update(message).digest("hex");
-    const payload = { source: label, a, b, c, d, signed };
+
+    const payload = {
+      source: label,
+      a: routing,
+      b,
+      c,
+      d,
+      signed
+    };
+
     const result = transmitSignedEntry(payload, e);
-    console.log(`[${new Date().toISOString()}] ${label} → ${a} | Transmitted:`, result);
+    console.log(`[${new Date().toISOString()}] ${label} → ${routing} | Transmitted:`, result);
   });
 }
 
