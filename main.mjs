@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 const key = "9f3c2a7e8d4b1c6f0a2d3e4f5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"; // Shared HMAC-SHA256 key
-export const entries =
+const entries =
 [
   ["084003997", "727762681039763", "041215663", "1298861419215"],
   ["084003997", "727762682039763", "041215663", "1298861419215"],
@@ -24,3 +24,4 @@ export const entries =
   let h = crypto.createHmac("sha256", key).update(m).digest("hex"); // HMAC-SHA256 hash
   console.log(`[${new Date().toISOString()}] ${a} → ${d} | ${b} → ${e} | $${c} | HMAC: ${h}`);
 });
+export { entries };
