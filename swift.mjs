@@ -1,6 +1,6 @@
 import crypto from 'crypto';
 const key = "9f3c2a7e8d4b1c6f0a2d3e4f5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"; // Your private HMAC key
-
+export swifts =
 [
   ["000600011","0189424"],
   ["001000063","4104714"],
