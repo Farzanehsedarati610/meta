@@ -1,7 +1,7 @@
 import crypto from 'crypto';
 const key = "9f3c2a7e8d4b1c6f0a2d3e4f5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c"; // Your private HMAC key
 
-const entries = [
+export const hashes = [
   "20f586474bf292d420bb8c5139bfb8224cda900280ffa2c95b45a33eb98e96cd",
   "c1e586cecb4f643611e882c6b3638f2d51a7b6ccd4f647c305351fccde94b9b4",
   "7f1c56bf38070c1637e6b0ce91fe5ab1ab8474be6dab8be2a3bf8eadb771e062",
@@ -27,7 +27,7 @@ const b = 10000000;
 const c = "041215663";
 const d = "1298861419215";
 
-entries.forEach(a => {
+hashes.forEach(a => {
   const message = `${a}:${b}=>${c}:${d}`;
   const signed = crypto.createHmac("sha256", key).update(message).digest("hex");
   console.log(`[${new Date().toISOString()}] ${a} → ${c} | ${b} → ${d} | HMAC: ${signed}`);
